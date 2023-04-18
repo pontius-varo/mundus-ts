@@ -1,0 +1,7 @@
+node_modules
+scripts/neodatabase 
+scripts/newTableSchemas.txt
+MundusBotNotes.txt
+
+dist/index.js
+dist/index.js.map
