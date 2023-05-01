@@ -62,7 +62,7 @@ function insertUserIntoSQL(pool, username, github_url, linkedin_url, website_url
             if(err){
                 throw new Error(err);
             } else {
-                console.log(`${user} was successfully exported to mundus_data`);
+                console.log(`${username} was successfully exported to mundus_data`);
             }
 
         }
@@ -99,10 +99,6 @@ async function main(){
             userItem.Status
         );
     });
-
-    pool.end((err) => {
-        throw new Error(err);
-    })
 
     console.log("OK");
 }
