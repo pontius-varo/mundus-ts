@@ -5,3 +5,6 @@ MundusBotNotes.txt
 
 dist/index.js
 dist/index.js.map
+
+scripts/.env
+.env
