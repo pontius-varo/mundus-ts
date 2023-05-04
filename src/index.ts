@@ -7,6 +7,9 @@ dotenv.config()
 
 const port: number = 4444;
 
+
+
+
 // API Key
 let botToken: string;
 
@@ -20,6 +23,27 @@ function extractEnvironmentVariable(key: keyof NodeJS.ProcessEnv): string {
 
     return value;
 };
+
+// This function should be wrapped into a promise
+async function getUserInfoQuery(pool: mysql.Pool, username: string){
+    
+    let getUserInfoQuery = `CALL GetUserInfo('${username}');`
+
+    let result;
+
+    // This should probably live in a generate query function
+    // Also, this portion of the function should be wrapped in a promise...
+    await pool.query(getUserInfoQuery, (err, res) => {
+        if(err){
+            throw new Error('Error');
+        } 
+        
+        result = res;
+    });
+
+    return result; 
+};
+
 
 function getUserInfo(msg: Message, username: string): string {
 

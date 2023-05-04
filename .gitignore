@@ -8,3 +8,5 @@ dist/index.js.map
 
 scripts/.env
 .env
+
+src/test.ts
