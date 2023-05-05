@@ -12,18 +12,16 @@ DELIMITER //
 **************************************/ 
 
 CREATE PROCEDURE GetUserInfo(
-    IN UserName VARCHAR(255),
-    OUT url VARCHAR(255),
-    OUT type VARCHAR(255)
+    IN UserName VARCHAR(255)
 )
 BEGIN 
 
     SELECT user_id FROM Users WHERE username = Username LIMIT 1 INTO @UserId;
 
     SELECT 
-        ui.url,
-        ui.type
-    FROM UserInfo 
+    ui.url,
+    ui.type
+    FROM UserInfo ui
     WHERE user_id = @UserId; 
     
 END 

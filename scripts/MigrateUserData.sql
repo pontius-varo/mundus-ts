@@ -25,7 +25,7 @@ BEGIN
     -- Update initial user date into Users table 
     INSERT INTO Users (username, created, last_modified) VALUES (Username, @CreatedDate, @LastModified);
     -- Get auto generated Userid
-    SELECT user_id FROM Users ORDER BY Created DESC LIMIT 1 INTO @UserId; 
+    SELECT user_id FROM Users WHERE username = Username INTO @UserId; 
 
     -- Insert into UserInfo, 3 inserts here<> (website, github, linkedin)
     IF GitHub <> '' THEN INSERT INTO UserInfo (url, type, created, last_modified, user_id) VALUES (GitHub, 'GitHub', @CreatedDate, @LastModified, @UserId);
@@ -36,7 +36,7 @@ BEGIN
 
     IF Website <> '' THEN INSERT INTO UserInfo (url, type, created, last_modified, user_id) VALUES (Website, 'Website', @CreatedDate, @LastModified, @UserId);
     END IF; 
-    -- Insert into UserStatus 
+     
     INSERT INTO UserStatus (status, created, last_modified, user_id) VALUES (Status, @CreatedDate, @LastModified, @UserId); 
 END 
 //
