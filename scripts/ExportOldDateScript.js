@@ -55,8 +55,10 @@ function getUserDataFromSQLite(db){
 
 function insertUserIntoSQL(pool, username, github_url, linkedin_url, website_url, status){
 
+    // Add logic to cut status that are too long(set a char limit of 200);
+
     pool.query(
-        `CALL MigrateUserData('${username}', '${github_url}', '${linkedin_url}', '${website_url}', '${status}');`, 
+        `CALL MigrateUserData('${username}', '${github_url}', '${linkedin_url}', '${website_url}', 'New Status');`, 
         (err, res) => {
 
             if(err){

@@ -8,21 +8,19 @@ DELIMITER //
 *   ChangeLog:
 *   --Name----------------Date---------------------Description----------
 *   Antonio Ponce         (03/05/23)               Changed proc to be a stand-alone insert
-*
+*   Antonio Ponce         (11/05/23)               Simplied SELECT
 **************************************/ 
 
-CREATE PROCEDURE GetUserInfo(
-    IN UserName VARCHAR(255)
-)
+CREATE PROCEDURE GetUserInfo(IN UserName VARCHAR(255))
 BEGIN 
 
-    SELECT user_id FROM Users WHERE username = Username LIMIT 1 INTO @UserId;
-
     SELECT 
-    ui.url,
-    ui.type
-    FROM UserInfo ui
-    WHERE user_id = @UserId; 
-    
+        ui.url, 
+        ui.type 
+    FROM UserInfo ui 
+    JOIN Users u 
+        ON u.user_guid = ui.user_guid 
+    WHERE u.username = UserName; 
+
 END 
 //
