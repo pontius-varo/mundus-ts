@@ -10,3 +10,4 @@ scripts/.env
 .env
 
 src/test.ts
+dist/*
